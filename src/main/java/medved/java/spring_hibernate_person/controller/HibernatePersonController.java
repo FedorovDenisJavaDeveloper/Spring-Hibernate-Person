@@ -1,5 +1,6 @@
 package medved.java.spring_hibernate_person.controller;
 
+import medved.java.spring_hibernate_person.entity.BasePerson;
 import medved.java.spring_hibernate_person.entity.Persons;
 import medved.java.spring_hibernate_person.repository.PersonsRepository;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,21 +27,21 @@ public class HibernatePersonController {
 
     @GetMapping("/by-age")
     public List<Persons> getPersonsByAge(@RequestParam("age") int age){
-        return repository.findPersonsByBasePersonAgeLessThanOrderByBasePersonAgeAsc(age);
+        return repository.findPersonsByAgeAsc(age);
     }
 
-//    @GetMapping("/baseperson/by-age")
-//    public List<BasePerson> getBasePersonsByAge(@RequestParam("age") int age){
-//        return repository.findBasePersonByBasePersonAgeLessThanOrderByBasePersonAgeDesc(age);
-//    }
-//
-//    @GetMapping("/phone/by-age")
-//    public List<String> getPhoneByAge(@RequestParam("age") int age){
-//        return repository.findPhoneNumberByBasePersonAgeLessThan(age);
-//    }
+    @GetMapping("/baseperson/by-age")
+    public List<BasePerson> getBasePersonsByAge(@RequestParam("age") int age){
+        return repository.findBasePersonByAge(age);
+    }
+
+    @GetMapping("/phone/by-age")
+    public List<String> getPhoneByAge(@RequestParam("age") int age){
+        return repository.findPhoneNumberByAge(age);
+    }
 
     @GetMapping("/by-fio")
     public List<Optional<Persons>> getPersonsByNameAndSurname(@RequestParam("name") String name, @RequestParam("surname") String surname){
-        return repository.findPersonsByBasePersonNameAndBasePersonSurname(name, surname);
+        return repository.findPersonsByFio(name, surname);
     }
 }
