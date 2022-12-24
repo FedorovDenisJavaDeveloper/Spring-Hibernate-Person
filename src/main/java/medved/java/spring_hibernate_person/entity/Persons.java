@@ -1,5 +1,6 @@
 package medved.java.spring_hibernate_person.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
@@ -15,6 +16,8 @@ import lombok.NoArgsConstructor;
 public class Persons {
     @EmbeddedId
     private BasePerson basePerson;
-    private String phone_number;
-    private String city_of_living;
+    @Column(name = "phone_number")
+    private String phoneNumber;
+    @Column(name = "city_of_living")
+    private String cityOfLiving;
 }
