@@ -1,6 +1,6 @@
 package medved.java.spring_hibernate_person.controller;
 
-import lombok.AllArgsConstructor;
+import medved.java.spring_hibernate_person.entity.BasePerson;
 import medved.java.spring_hibernate_person.entity.Persons;
 import medved.java.spring_hibernate_person.repository.PersonsRepository;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +20,7 @@ public class HibernatePersonController {
     }
 
     @GetMapping("/by-city")
-    public List<Persons> getPersonsById(@RequestParam("city_of_living") String city){
-        return repository.getPersonsById(city);
+    public List<Persons> getPersonsByCity(@RequestParam("city_of_living") String city){
+        return repository.getPersonsByCity(city);
     }
 }
